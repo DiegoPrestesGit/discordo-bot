@@ -1,0 +1,1 @@
+import {token, owners} from './config/config'
