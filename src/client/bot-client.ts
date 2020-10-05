@@ -46,4 +46,29 @@ export default class BotClient extends AkairoClient {
     },
     ignorePermissions: owners
   })
+
+  public constructor(config: BotOptions) {
+    super({
+      ownerID: config.owners
+    })
+
+    this.config = config
+  }
+
+  private async _init(): Promise<void> {
+    this.commandHandler.useListenerHandler(this.listenerHandler)
+    this.listenerHandler.setEmmiters({
+      commandHandler: this.commandHandler,
+      listenerHandler: this.listenerHandler,
+      process
+    })
+
+    this.commandHandler.loadAll()
+    this.listenerHandler.loadAll()
+  }
+
+  public async start(): Promise<string> {
+    await this._init()
+    return this.login(this.config.token)
+  }
 }
