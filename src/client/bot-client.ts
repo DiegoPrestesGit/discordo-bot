@@ -1,4 +1,5 @@
 import { AkairoClient, CommandHandler, ListenerHandler } from 'discord-akairo'
+
 import { User, Message } from 'discord.js'
 import { join } from 'path'
 import { prefix, owners } from '../config/config'
@@ -65,19 +66,19 @@ export default class BotClient extends AkairoClient {
         process
       })
     } catch {
-      console.log('ohhh shi, a spaaa')
+      console.log('The Music Manager has found some problems to initiate')
     }
-
     this.commandHandler.loadAll()
     this.listenerHandler.loadAll()
   }
 
-  public async start(): Promise<string> {
+  public start(): Promise<string> {
     try {
-      await this._init()
+      this._init()
+      console.log('configuration JSON', this.config)
       return this.login(this.config.token)
     } catch {
-      console.log('fuck it')
+      console.log('The Music Manager has found some problems to start')
     }
   }
 }

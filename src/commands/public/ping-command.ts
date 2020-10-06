@@ -16,7 +16,6 @@ export default class PingCommand extends Command {
   }
 
   public exec(message: Message): Promise<Message> {
-    console.log('messaging', message)
     return message.util.send(`Pong! \`${this.client.ws.ping}ms\``)
   }
 }
