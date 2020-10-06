@@ -1,7 +1,0 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.owners = exports.prefix = exports.token = void 0;
-exports.token = 'NzYyNzQ5MjQ3MzU0MzA2NjEx.X3trlw.sMxtNAjJUMszgXKV8YddgFxT6ls';
-exports.prefix = ':';
-exports.owners = [];
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY29uZmlnLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vc3JjL2NvbmZpZy9jb25maWcudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7O0FBQWEsUUFBQSxLQUFLLEdBQ2hCLDZEQUE2RCxDQUFBO0FBQ2xELFFBQUEsTUFBTSxHQUFHLEdBQUcsQ0FBQTtBQUNaLFFBQUEsTUFBTSxHQUFhLEVBQUUsQ0FBQSIsInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCBjb25zdCB0b2tlbiA9XHJcbiAgJ056WXlOelE1TWpRM016VTBNekEyTmpFeC5YM3RybHcuc014dE5BakpVTXN6Z1hLVjhZZGRnRnhUNmxzJ1xyXG5leHBvcnQgY29uc3QgcHJlZml4ID0gJzonXHJcbmV4cG9ydCBjb25zdCBvd25lcnM6IHN0cmluZ1tdID0gW11cclxuIl19
