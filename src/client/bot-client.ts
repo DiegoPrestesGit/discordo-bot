@@ -1,7 +1,6 @@
 import { AkairoClient, CommandHandler, ListenerHandler } from 'discord-akairo'
 import { User, Message } from 'discord.js'
 import { join } from 'path'
-import { prefix, owners } from '../config/config'
 
 declare module 'discord-akairo' {
   interface AkairoClient {
@@ -44,7 +43,7 @@ export default class BotClient extends AkairoClient {
       },
       otherwise: ''
     },
-    ignorePermissions: owners
+    ignorePermissions: process.env.
   })
 
   public constructor(config: BotOptions) {
