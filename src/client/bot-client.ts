@@ -25,7 +25,7 @@ export default class BotClient extends AkairoClient {
     directory: join(__dirname, '..', 'commands'),
     prefix,
     allowMention: true,
-    handleEdits: true,
+    handleEdits: false,
     commandUtilLifetime: 3e5,
     defaultCooldown: 6e4,
     argumentDefaults: {
@@ -56,19 +56,27 @@ export default class BotClient extends AkairoClient {
   }
 
   private async _init(): Promise<void> {
-    this.commandHandler.useListenerHandler(this.listenerHandler)
-    this.listenerHandler.setEmmiters({
-      commandHandler: this.commandHandler,
-      listenerHandler: this.listenerHandler,
-      process
-    })
+    try {
+      this.commandHandler.useListenerHandler(this.listenerHandler)
+      this.listenerHandler.setEmitters({
+        commandHandler: this.commandHandler,
+        listenerHandler: this.listenerHandler,
+        process
+      })
+    } catch {
+      console.log('ohhh shi, a spaaa')
+    }
 
     this.commandHandler.loadAll()
     this.listenerHandler.loadAll()
   }
 
   public async start(): Promise<string> {
-    await this._init()
-    return this.login(this.config.token)
+    try {
+      await this._init()
+      return this.login(this.config.token)
+    } catch {
+      console.log('fuck it')
+    }
   }
 }

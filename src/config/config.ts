@@ -1,3 +1,4 @@
-export const token = 'WItli6pkqs_v3n00eMJvWikTWyMNS8uJ'
+export const token =
+  'NzYyNzQ5MjQ3MzU0MzA2NjEx.X3trlw.sMxtNAjJUMszgXKV8YddgFxT6ls'
 export const prefix = ':'
-export const owners: string[] = ['762749247354306611']
+export const owners: string[] = []
