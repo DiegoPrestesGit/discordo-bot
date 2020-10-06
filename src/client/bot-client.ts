@@ -1,13 +1,15 @@
 import { AkairoClient, CommandHandler, ListenerHandler } from 'discord-akairo'
-
 import { User, Message } from 'discord.js'
 import { join } from 'path'
-import { prefix, owners } from '../config/config'
+import { prefix, owners, dbName } from '../config/config'
+import { Connection } from 'typeorm'
+import connectionManager from '../database/typeorm-connection'
 
 declare module 'discord-akairo' {
   interface AkairoClient {
     commandHandler: CommandHandler
     listenerHandler: ListenerHandler
+    db: Connection
   }
 }
 
@@ -18,6 +20,7 @@ interface BotOptions {
 
 export default class BotClient extends AkairoClient {
   public config: BotOptions
+  public db!: Connection
   public listenerHandler = new ListenerHandler(this, {
     directory: join(__dirname, '..', 'listeners')
   })
@@ -65,16 +68,21 @@ export default class BotClient extends AkairoClient {
         listenerHandler: this.listenerHandler,
         process
       })
+
+      this.commandHandler.loadAll()
+      this.listenerHandler.loadAll()
+
+      this.db = connectionManager.get(dbName)
+      await this.db.connect()
+      await this.db.synchronize()
     } catch {
       console.log('The Music Manager has found some problems to initiate')
     }
-    this.commandHandler.loadAll()
-    this.listenerHandler.loadAll()
   }
 
-  public start(): Promise<string> {
+  public async start(): Promise<string> {
     try {
-      this._init()
+      await this._init()
       console.log('configuration JSON', this.config)
       return this.login(this.config.token)
     } catch {
